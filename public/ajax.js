@@ -9,6 +9,7 @@ $(document).ready(function () {
             },
             success: function (result) {
                 //alert(result);
+                result = printYou(JSON.parse(result)['results'][0]);
                 $('#portfolio_result').html(result);
             },
             error: function (result) {
@@ -28,9 +29,9 @@ $(document).ready(function () {
             },
             success: function (result) {
                 //alert(result);
-                
+
                 result = printYou(JSON.parse(result));
-                
+
                 $('#user_result').html(result);
             },
             error: function (result) {
@@ -50,6 +51,7 @@ $(document).ready(function () {
             },
             success: function (result) {
                 //alert(result);
+                result = printYou(JSON.parse(result)['results'][0]);
                 $('#orders_result').html(result);
             },
             error: function (result) {
@@ -121,8 +123,8 @@ function printYou(you) {
         if (you[k] instanceof Object) {
             printYou(you[k]);
         } else {
-           //alert(k + " = " + you[k]);
-           
+            //alert(k + " = " + you[k]);
+
             table += "<tr>";
             table += "<td>";
             table += k;
@@ -131,9 +133,35 @@ function printYou(you) {
             table += you[k];
             table += "</td>";
             table += "</tr>";
-            
+
         }
-       }
-       
-   return table;
+    }
+
+    return table;
+}
+
+function printList(obj, table) {
+
+
+    for (var k in obj) {
+
+        if (obj[k] instanceof Object) {
+            table += "<tr>";
+            table += printList(obj[k], table);
+            table += "</tr>";
+        } else {
+            //alert(k + " = " + you[k]);
+
+
+            table += "<td>";
+            table += k;
+            table += "</td>";
+            table += "<td>";
+            table += obj[k];
+            table += "</td>";
+
+        }
+    }
+
+    return table;
 }
