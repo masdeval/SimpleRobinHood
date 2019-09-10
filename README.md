@@ -1,5 +1,6 @@
 # SimpleRobinHood
-A simple Node.js application to interact with RobinHood. 
+
+This is a single page application using Node.js as backend server to interact with RobinHood.com. 
 
 ## Requirements
 1. Node.js
