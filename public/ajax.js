@@ -51,7 +51,8 @@ $(document).ready(function () {
             },
             success: function (result) {
                 //alert(result);
-                result = printYou(JSON.parse(result)['results'][0]);
+                result = makeTableHTML(JSON.parse(result)['results']);
+               
                 $('#orders_result').html(result);
             },
             error: function (result) {
@@ -140,28 +141,27 @@ function printYou(you) {
     return table;
 }
 
-function printList(obj, table) {
-
-
-    for (var k in obj) {
-
-        if (obj[k] instanceof Object) {
-            table += "<tr>";
-            table += printList(obj[k], table);
-            table += "</tr>";
-        } else {
-            //alert(k + " = " + you[k]);
-
-
-            table += "<td>";
-            table += k;
-            table += "</td>";
-            table += "<td>";
-            table += obj[k];
-            table += "</td>";
-
-        }
+function makeTableHTML(arr) {
+    //var result = "<table border=1>";
+    
+    var table = '';
+    table += "<thead> <tr>";
+    for(var k in arr[0]){
+        table += "<th>";
+        table += k;
+        table += "</th>";
     }
+    table += "</tr></thead>";       
+    
+    for (i = 0; i < arr.length; i++)
+    {
+        table += "<tr>";
+        for(var w in arr[i]){
+            table += "<td>"+arr[i][w]+"</td>";
+        }
+        table += "</tr>";
+    }
+    //result += "</table>";
 
     return table;
 }
