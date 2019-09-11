@@ -16,7 +16,7 @@ This is a single page application using Node.js as backend server to interact wi
         $ nodejs server.js
 4. Open the browser to access the application at :
 
-        http:://127.0.0.1:8080/simplerobinhood/index.html
+        http://127.0.0.1:8080/simplerobinhood/index.html
 
 ## Access token 
 
