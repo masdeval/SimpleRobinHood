@@ -9,7 +9,8 @@ $(document).ready(function () {
             },
             success: function (result) {
                 //alert(result);
-                result = printYou(JSON.parse(result)['results'][0]);
+
+                result = makeTableHTML(JSON.parse(result)['results']);
                 $('#portfolio_result').html(result);
             },
             error: function (result) {
@@ -96,10 +97,10 @@ $(document).ready(function () {
                         instrument
                     },
                     success: function (result) {
-                        $('#place_order_result').html(result);
+                        $('#place_order_result').html("Order placed.");
                     },
                     error: function (result) {
-                        alert(result);
+                        $('#place_order_result').html("Error: " + result);
                     }
                 });
 
